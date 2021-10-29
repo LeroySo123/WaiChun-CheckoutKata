@@ -5,6 +5,9 @@ using WaiChun_CheckoutKata.Controllers;
 using WaiChun_CheckoutKata.DataBase;
 using WaiChun_CheckoutKata.Models;
 using Microsoft.AspNetCore.Mvc;
+using WaiChun_CheckoutKata.DTO;
+using WaiChun_CheckoutKata.Services;
+using System.Linq;
 
 namespace WaiChun_CheckoutKata_Test
 {
@@ -12,9 +15,11 @@ namespace WaiChun_CheckoutKata_Test
     {
         private readonly ILogger<HomeController> _logger;
         private readonly HomeController _homeController;
+        private readonly CheckOutServices _checkOutServices;
 
         public Tests()
         {
+            _checkOutServices = new CheckOutServices();
             _homeController = new HomeController(_logger);
         }
 
@@ -53,5 +58,42 @@ namespace WaiChun_CheckoutKata_Test
             Assert.AreEqual(actualResult, expectedResult);
         }
 
+        [Test]
+        public void TestGetItemPriceCount()
+        {
+            //Arrange
+            List<BasketItemModel> basketItemsList = new List<BasketItemModel>();
+            basketItemsList.Add(new BasketItemModel() { ItemID = 1, ItemCount = 1 });
+            basketItemsList.Add(new BasketItemModel() { ItemID = 2, ItemCount = 2 });
+            basketItemsList.Add(new BasketItemModel() { ItemID = 1, ItemCount = 3 });
+            var expectedResult = 6;
+
+
+            //Act
+            List<BasketItemPriceDTO> basketItemsWithPrice = _checkOutServices.GetItemPrice(basketItemsList);
+            var actualResult = basketItemsWithPrice.Count;
+
+            //Assert
+            Assert.AreEqual(actualResult, expectedResult);
+        }
+
+        [Test]
+        public void TestGetItemPriceItemSKUName()
+        {
+            //Arrange
+            List<BasketItemModel> basketItemsList = new List<BasketItemModel>();
+            basketItemsList.Add(new BasketItemModel() { ItemID = 1, ItemCount = 1 });
+            basketItemsList.Add(new BasketItemModel() { ItemID = 2, ItemCount = 2 });
+            basketItemsList.Add(new BasketItemModel() { ItemID = 1, ItemCount = 3 });
+            var expectedResult = "B";
+
+
+            //Act
+            List<BasketItemPriceDTO> basketItemsWithPrice = _checkOutServices.GetItemPrice(basketItemsList);
+            var actualResult = basketItemsWithPrice.Where(x => x.ItemID == 2).Select(x => x.ItemSKU).FirstOrDefault().ToString();
+
+            //Assert
+            Assert.AreEqual(actualResult, expectedResult);
+        }
     }
 }
