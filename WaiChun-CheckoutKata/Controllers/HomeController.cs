@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using WaiChun_CheckoutKata.DataBase;
 using WaiChun_CheckoutKata.Models;
 
 namespace WaiChun_CheckoutKata.Controllers
@@ -20,7 +21,12 @@ namespace WaiChun_CheckoutKata.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            ItemSKUViewModel _itemSKUViewModel = new ItemSKUViewModel();
+            ItemData _itemData = new ItemData();
+            var itemList = _itemData.GetItemData();
+            _itemSKUViewModel.ItemSKUList = itemList;
+
+            return View(_itemSKUViewModel);
         }
 
         public IActionResult Privacy()
@@ -33,5 +39,6 @@ namespace WaiChun_CheckoutKata.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
     }
 }
