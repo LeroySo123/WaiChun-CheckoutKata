@@ -210,5 +210,45 @@ namespace WaiChun_CheckoutKata_Test
             //Assert
             Assert.AreEqual(actualResult, expectedResult);
         }
+
+        [Test]
+        public void TestCheck()
+        {
+            //Arrange
+            List<BasketItemModel> basketItemsList = new List<BasketItemModel>();
+            basketItemsList.Add(new BasketItemModel() { ItemID = 4, ItemCount = 1 });
+
+
+            var expectedResult = 200;
+
+            //Act
+            var result = _homeController.check(basketItemsList);
+            var actualResult = result as OkObjectResult;
+
+            //Assert
+            Assert.IsNotNull(actualResult);
+            Assert.AreEqual(actualResult.StatusCode, expectedResult);
+        }
+
+        [Test]
+        public void TestCheckTotal()
+        {
+            //Arrange
+            List<BasketItemModel> basketItemsList = new List<BasketItemModel>();
+            basketItemsList.Add(new BasketItemModel() { ItemID = 1, ItemCount = 2 });
+            basketItemsList.Add(new BasketItemModel() { ItemID = 2, ItemCount = 2 });
+            basketItemsList.Add(new BasketItemModel() { ItemID = 2, ItemCount = 2 });
+            basketItemsList.Add(new BasketItemModel() { ItemID = 4, ItemCount = 3 });
+
+            var expectedResult = 212.5;
+
+            //Act
+            var result = _homeController.check(basketItemsList);
+            var actualResult = result as OkObjectResult;
+
+            //Assert
+            Assert.IsNotNull(actualResult);
+            Assert.AreEqual(actualResult.Value, expectedResult);
+        }
     }
 }

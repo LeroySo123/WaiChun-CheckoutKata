@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WaiChun_CheckoutKata.DataBase;
 using WaiChun_CheckoutKata.Models;
+using WaiChun_CheckoutKata.Services;
 
 namespace WaiChun_CheckoutKata.Controllers
 {
@@ -44,7 +45,9 @@ namespace WaiChun_CheckoutKata.Controllers
         public IActionResult check([FromBody] List<BasketItemModel> basketItems)
         {
 
-            return Ok("Complata");
+            CheckOutServices checkOutServices = new CheckOutServices();
+            double TotalPrice = checkOutServices.CheckOutTotal(basketItems);
+            return Ok(TotalPrice);
         }
 
     }
