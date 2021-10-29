@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaiChun-CheckoutKata", "WaiChun-CheckoutKata\WaiChun-CheckoutKata.csproj", "{FE7D114F-310F-4180-B8B2-3EFE3B5D5873}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaiChun-CheckoutKata-Test", "WaiChun-CheckoutKata-Test\WaiChun-CheckoutKata-Test.csproj", "{4A32DFDD-C7E1-41EA-90C3-7E3ADEDD3F61}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE7D114F-310F-4180-B8B2-3EFE3B5D5873}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE7D114F-310F-4180-B8B2-3EFE3B5D5873}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE7D114F-310F-4180-B8B2-3EFE3B5D5873}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE7D114F-310F-4180-B8B2-3EFE3B5D5873}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A32DFDD-C7E1-41EA-90C3-7E3ADEDD3F61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A32DFDD-C7E1-41EA-90C3-7E3ADEDD3F61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A32DFDD-C7E1-41EA-90C3-7E3ADEDD3F61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A32DFDD-C7E1-41EA-90C3-7E3ADEDD3F61}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {025E9A8C-3E41-4953-93B4-7F2226B19750}
+	EndGlobalSection
+EndGlobal
