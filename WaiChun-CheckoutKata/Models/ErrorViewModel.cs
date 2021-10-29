@@ -1,4 +1,3 @@
-using System;
 
 namespace WaiChun_CheckoutKata.Models
 {

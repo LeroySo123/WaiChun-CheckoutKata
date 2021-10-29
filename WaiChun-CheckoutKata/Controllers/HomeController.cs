@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using WaiChun_CheckoutKata.DataBase;
 using WaiChun_CheckoutKata.Models;
 using WaiChun_CheckoutKata.Services;
@@ -44,7 +41,6 @@ namespace WaiChun_CheckoutKata.Controllers
         [HttpPost]
         public IActionResult check([FromBody] List<BasketItemModel> basketItems)
         {
-
             CheckOutServices checkOutServices = new CheckOutServices();
             double TotalPrice = checkOutServices.CheckOutTotal(basketItems);
             return Ok(TotalPrice);

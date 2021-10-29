@@ -28,7 +28,7 @@ function ClickCheckOut() {
             data: JSON.stringify(basket),
             dataType: 'json',
             success: function (data) {
-                alert(data);
+                $("#totalprice").text(data);
             }
         });
     }
