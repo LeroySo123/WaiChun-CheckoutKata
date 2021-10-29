@@ -136,5 +136,79 @@ namespace WaiChun_CheckoutKata_Test
             Assert.AreEqual(actualResult, expectedResult);
 
         }
+
+        [Test]
+        public void TestCheckOutTotal()
+        {
+            //Arrange
+            List<BasketItemModel> basketItemsList = new List<BasketItemModel>();
+            basketItemsList.Add(new BasketItemModel() { ItemID = 1, ItemCount = 1 });
+            basketItemsList.Add(new BasketItemModel() { ItemID = 2, ItemCount = 2 });
+            basketItemsList.Add(new BasketItemModel() { ItemID = 2, ItemCount = 1 });
+
+            var expectedResult = 50;
+
+
+            //Act
+            double actualResult = _checkOutServices.CheckOutTotal(basketItemsList);
+
+
+            //Assert
+            Assert.AreEqual(actualResult, expectedResult);
+
+        }
+
+        [Test]
+        public void TestCheckOutTotalNoDiscount()
+        {
+            //Arrange
+            List<BasketItemModel> basketItemsList = new List<BasketItemModel>();
+            basketItemsList.Add(new BasketItemModel() { ItemID = 4, ItemCount = 1 });
+
+
+            var expectedResult = 55;
+
+            //Act
+            double actualResult = _checkOutServices.CheckOutTotal(basketItemsList);
+
+            //Assert
+            Assert.AreEqual(actualResult, expectedResult);
+        }
+
+        [Test]
+        public void TestCheckOutTotalDiscount()
+        {
+            //Arrange
+            List<BasketItemModel> basketItemsList = new List<BasketItemModel>();
+            basketItemsList.Add(new BasketItemModel() { ItemID = 4, ItemCount = 1 });
+            basketItemsList.Add(new BasketItemModel() { ItemID = 4, ItemCount = 2 });
+            basketItemsList.Add(new BasketItemModel() { ItemID = 4, ItemCount = 1 });
+
+            var expectedResult = 165;
+
+            //Act
+            double actualResult = _checkOutServices.CheckOutTotal(basketItemsList);
+
+            //Assert
+            Assert.AreEqual(actualResult, expectedResult);
+        }
+        [Test]
+        public void TestCheckOutTotalDiscount1()
+        {
+            //Arrange
+            List<BasketItemModel> basketItemsList = new List<BasketItemModel>();
+            basketItemsList.Add(new BasketItemModel() { ItemID = 4, ItemCount = 1 });
+            basketItemsList.Add(new BasketItemModel() { ItemID = 4, ItemCount = 2 });
+            basketItemsList.Add(new BasketItemModel() { ItemID = 4, ItemCount = 1 });
+            basketItemsList.Add(new BasketItemModel() { ItemID = 4, ItemCount = 1 });
+
+            var expectedResult = 220;
+
+            //Act
+            double actualResult = _checkOutServices.CheckOutTotal(basketItemsList);
+
+            //Assert
+            Assert.AreEqual(actualResult, expectedResult);
+        }
     }
 }

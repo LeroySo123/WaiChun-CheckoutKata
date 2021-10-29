@@ -14,7 +14,8 @@ namespace WaiChun_CheckoutKata.Services
         {
             double totalPrice = 0;
             List<BasketItemPriceDTO> basketItemsWithPrice = GetItemPrice(basketItemsList);
-
+            List<BasketItemTotalPriceDTO> itemTotalPrice = CalculateItemTotalPrice(basketItemsWithPrice);
+            totalPrice = itemTotalPrice.Select(x => x.TotalPrice).Sum();
             return totalPrice;
         }
 
