@@ -95,5 +95,46 @@ namespace WaiChun_CheckoutKata_Test
             //Assert
             Assert.AreEqual(actualResult, expectedResult);
         }
+
+        [Test]
+        public void TestIsPromotionItemNoDiscount()
+        {
+            //Arrange
+            List<BasketItemPriceDTO> itemList = new List<BasketItemPriceDTO>();
+            itemList.Add(new BasketItemPriceDTO() { ItemID = 2, ItemSKU = "B", UnitPrice = 15 });
+            itemList.Add(new BasketItemPriceDTO() { ItemID = 2, ItemSKU = "B", UnitPrice = 15 });
+
+            var expectedResult = false;
+
+
+            //Act
+            bool actualResult = _checkOutServices.CalculatePromotionsPrice(itemList, out double itemPriceTotalinPromo);
+
+
+            //Assert
+            Assert.AreEqual(actualResult, expectedResult);
+
+        }
+
+        [Test]
+        public void TestIsPromotionItemHaveDiscount()
+        {
+            //Arrange
+            List<BasketItemPriceDTO> itemList = new List<BasketItemPriceDTO>();
+            itemList.Add(new BasketItemPriceDTO() { ItemID = 2, ItemSKU = "B", UnitPrice = 15 });
+            itemList.Add(new BasketItemPriceDTO() { ItemID = 2, ItemSKU = "B", UnitPrice = 15 });
+            itemList.Add(new BasketItemPriceDTO() { ItemID = 2, ItemSKU = "B", UnitPrice = 15 });
+
+            var expectedResult = true;
+
+
+            //Act
+            bool actualResult = _checkOutServices.CalculatePromotionsPrice(itemList, out double itemPriceTotalinPromo);
+
+
+            //Assert
+            Assert.AreEqual(actualResult, expectedResult);
+
+        }
     }
 }
