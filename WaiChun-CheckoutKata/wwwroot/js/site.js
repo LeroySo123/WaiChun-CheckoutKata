@@ -18,3 +18,18 @@ function AddtoBasket(itemname) {
         $(ddlID).val("");
     }
 }
+
+function ClickCheckOut() {
+    if (basket.length > 0) {
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "/home/check",
+            data: JSON.stringify(basket),
+            dataType: 'json',
+            success: function (data) {
+                alert(data);
+            }
+        });
+    }
+}

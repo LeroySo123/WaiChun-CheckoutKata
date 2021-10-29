@@ -1,13 +1,24 @@
+using Microsoft.Extensions.Logging;
 using NUnit.Framework;
+using System.Collections.Generic;
+using WaiChun_CheckoutKata.Controllers;
 using WaiChun_CheckoutKata.DataBase;
+using WaiChun_CheckoutKata.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WaiChun_CheckoutKata_Test
 {
     public class Tests
     {
+        private readonly ILogger<HomeController> _logger;
+        private readonly HomeController _homeController;
 
+        public Tests()
+        {
+            _homeController = new HomeController(_logger);
+        }
 
-        [SetUp]
+            [SetUp]
         public void Setup()
         {
         }
@@ -41,5 +52,6 @@ namespace WaiChun_CheckoutKata_Test
             //Assert
             Assert.AreEqual(actualResult, expectedResult);
         }
+
     }
 }
